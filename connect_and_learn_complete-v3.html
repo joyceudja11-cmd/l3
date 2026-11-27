@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CONNECT &amp; LEARN: The Grammar Connection Adventure</title>
+<link href="https://fonts.googleapis.com/css2?family=Lilita+One&amp;family=Nunito:wght@500;700;800;900&amp;family=Gaegu:wght@700&amp;display=swap" rel="stylesheet">
+<style>
+:root {
+  --wood-dark: #4A2B18;
+  --wood-mid: #7A4B2A;
+  --wood-light: #A66E43;
+  --cream-bg: #FFF9EC;
+  --cream-card: #FFFDF7;
+  --cream-shadow: #E6D5B8;
+  --awning-cream: #FFF8EA;
+  --awning-terracotta: #D96B43;
+  --ink: #2D1B10;
+  --ink-soft: #5C3D28;
+  --accent-berry: #C84B31;
+  --accent-mustard: #E5A93C;
+  --ok: #2E7D32;
+  --ok-bg: #E8F5E9;
+  --bad: #C62828;
+  --bad-bg: #FFEBEE;
+  --border-thick: 3px solid #2D1B10;
+  --radius-md: 14px;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-padding-top: env(safe-area-inset-top, 0px);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: #DFC7A7;
+  background-image:
+    radial-gradient(circle at 18% 14%, rgba(255, 249, 236, 0.55) 0%, transparent 45%),
+    repeating-linear-gradient(
+      90deg,
+      rgba(122, 75, 42, 0.08) 0px,
+      rgba(122, 75, 42, 0.08) 42px,
+      rgba(74, 43, 24, 0.14) 42px,
+      rgba(74, 43, 24, 0.14) 45px
+    );
+  color: var(--ink);
+  font: 600 15px/1.55 "Nunito", system-ui, sans-serif;
+  padding-bottom: 28px;
+}
+
+h1, h2, h3 {
+  font-family: "Lilita One", "Nunito", sans-serif;
+  font-weight: 400;
+  margin: 0;
+  letter-spacing: 0.4px;
+}
+
+.studio-bar {
+  max-width: 960px;
+  margin: 12px auto 6px;
+  padding: 10px 14px;
+  background: var(--cream-card);
+  border: var(--border-thick);
+  border-radius: 18px;
+  box-shadow: 0 5px 0 var(--wood-dark);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Lilita One", sans-serif;
+  font-size: 19px;
+  color: var(--wood-dark);
+}
+
+.brand-badge {
+  background: var(--awning-terracotta);
+  color: #FFF9EC;
+  font-family: "Gaegu", cursive;
+  font-size: 15px;
+  padding: 2px 9px;
+  border-radius: 999px;
+  border: 2px solid var(--wood-dark);
+}
+
+.zones {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+button {
+  font: 800 13px/1.2 "Nunito", sans-serif;
+  cursor: pointer;
+  border: 2.5px solid var(--wood-dark);
+  background: var(--cream-card);
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 7px 13px;
+  box-shadow: 0 3px 0 var(--wood-dark);
+  transition: transform 0.08s ease, background 0.12s ease;
+}
+
+button:hover {
+  background: var(--accent-mustard);
+  color: var(--ink);
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 var(--wood-dark);
+}
+
+.book-shell {
+  max-width: 960px;
+  margin: 10px auto 12px;
+  padding: 0 12px;
+}
+
+.stall-frame {
+  background: var(--wood-mid);
+  border: var(--border-thick);
+  border-radius: 26px;
+  padding: 12px;
+  box-shadow: 0 8px 0 var(--wood-dark), 0 14px 24px rgba(45, 27, 16, 0.25);
+}
+
+.awning {
+  height: 34px;
+  border-radius: 16px 16px 6px 6px;
+  border: 2.5px solid var(--wood-dark);
+  background: repeating-linear-gradient(
+    90deg,
+    var(--awning-terracotta) 0px,
+    var(--awning-terracotta) 26px,
+    var(--awning-cream) 26px,
+    var(--awning-cream) 52px
+  );
+  box-shadow: inset 0 -5px 0 rgba(74, 43, 24, 0.22);
+  margin-bottom: 10px;
+}
+
+.book {
+  display: grid;
+  grid-template-columns: repeat(var(--n, 1), 1fr);
+  gap: 12px;
+}
+
+.pg {
+  background: var(--cream-bg);
+  background-image: radial-gradient(var(--cream-shadow) 1.2px, transparent 1.2px);
+  background-size: 18px 18px;
+  border: var(--border-thick);
+  border-radius: 18px;
+  padding: 18px 18px 44px;
+  min-height: 580px;
+  position: relative;
+  box-shadow: inset 0 0 0 3px var(--cream-card), 0 4px 0 var(--wood-dark);
+  overflow-wrap: anywhere;
+}
+
+.pg[hidden] {
+  display: none;
+}
+
+.pg-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.plaque-title {
+  background: linear-gradient(180deg, var(--wood-light) 0%, var(--wood-mid) 100%);
+  color: #FFF9EC;
+  border: var(--border-thick);
+  border-radius: 14px;
+  padding: 6px 16px;
+  font-size: 21px;
+  box-shadow: 0 3px 0 var(--wood-dark), inset 0 2px 0 rgba(255, 249, 236, 0.35);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.unit-tag {
+  background: var(--accent-mustard);
+  color: var(--ink);
+  border: 2px solid var(--wood-dark);
+  border-radius: 999px;
+  padding: 2px 10px;
+  font-family: "Gaegu", cursive;
+  font-size: 15px;
+  font-weight: 700;
+  box-shadow: 0 2px 0 var(--wood-dark);
+}
+
+.pn {
+  position: absolute;
+  bottom: 10px;
+  right: 14px;
+  background: var(--wood-light);
+  color: #FFF9EC;
+  border: 2px solid var(--wood-dark);
+  border-radius: 999px;
+  padding: 1px 10px;
+  font-family: "Gaegu", cursive;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.pg.cover {
+  background:
+    linear-gradient(180deg, rgba(217, 107, 67, 0.14) 0%, rgba(229, 169, 60, 0.14) 100%),
+    var(--cream-bg);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px 20px;
+}
+
+.pg.cover[hidden] {
+  display: none;
+}
+
+.signboard {
+  background: linear-gradient(180deg, #9B643B 0%, #734424 100%);
+  border: var(--border-thick);
+  border-radius: 26px 26px 18px 18px;
+  padding: 16px 22px;
+  box-shadow: 0 5px 0 var(--wood-dark), inset 0 2px 0 rgba(255, 249, 236, 0.35);
+  max-width: 540px;
+  width: 100%;
+  color: #FFF9EC;
+}
+
+.signboard .kicker {
+  font-family: "Gaegu", cursive;
+  font-size: 17px;
+  color: #FFE49E;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.signboard h1 {
+  font-size: 38px;
+  line-height: 1.05;
+  text-shadow: 0 3px 0 var(--wood-dark);
+}
+
+.signboard h1 span {
+  background: var(--accent-mustard);
+  color: var(--ink);
+  border: 2.5px solid var(--wood-dark);
+  border-radius: 12px;
+  padding: 0 9px;
+  text-shadow: none;
+}
+
+.cover .sub {
+  background: var(--cream-card);
+  color: var(--accent-berry);
+  border: 2.5px solid var(--wood-dark);
+  border-radius: 999px;
+  padding: 4px 16px;
+  font-weight: 900;
+  font-size: 15px;
+  box-shadow: 0 3px 0 var(--wood-dark);
+}
+
+.cover-meta {
+  font-size: 13.5px;
+  font-weight: 800;
+  color: var(--ink-soft);
+}
+
+.fanboys-row {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 2px 0;
+}
+
+.fanboys-chip {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  border: 2.5px solid var(--wood-dark);
+  display: grid;
+  place-items: center;
+  font-family: "Lilita One", sans-serif;
+  font-size: 18px;
+  color: #FFF9EC;
+  box-shadow: 0 3px 0 var(--wood-dark);
+  transform: rotate(-2deg);
+}
+
+.fanboys-chip:nth-child(even) {
+  transform: rotate(2deg);
+}
+
+.box {
+  background: var(--cream-card);
+  border: 2.5px solid var(--wood-mid);
+  border-radius: var(--radius-md);
+  padding: 10px 13px;
+  margin: 9px 0;
+  box-shadow: 0 3px 0 var(--cream-shadow);
+}
+
+.box.tip {
+  border-color: var(--wood-dark);
+  background: #FFF2CC;
+  color: var(--ink);
+  box-shadow: 0 3px 0 #DFC484;
+}
+
+.box.bad {
+  border-color: var(--bad);
+  background: var(--bad-bg);
+}
+
+.box.good {
+  border-color: var(--ok);
+  background: var(--ok-bg);
+}
+
+.lab {
+  display: inline-block;
+  background: var(--accent-berry);
+  color: #FFF9EC;
+  border: 2px solid var(--wood-dark);
+  border-radius: 8px;
+  font-weight: 900;
+  font-size: 12px;
+  letter-spacing: 0.3px;
+  padding: 2px 9px;
+  margin-right: 6px;
+  margin-bottom: 4px;
+  text-shadow: 0 1px 0 rgba(45, 27, 16, 0.55);
+}
+
+.cc {
+  background: var(--accent-mustard);
+  color: var(--ink);
+  border: 1.5px solid var(--wood-dark);
+  border-radius: 7px;
+  padding: 0 6px;
+  font-weight: 900;
+}
+
+.x {
+  color: var(--bad);
+  font-weight: 900;
+  text-decoration: underline wavy;
+}
+
+.v {
+  color: var(--ok);
+  font-weight: 900;
+}
+
+.g2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+@media (max-width: 640px) {
+  .g2 {
+    grid-template-columns: 1fr;
+  }
+  .signboard h1 {
+    font-size: 30px;
+  }
+}
+
+.fb {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  text-align: left;
+  border-radius: 14px;
+  width: 100%;
+  margin: 5px 0;
+  padding: 8px 11px;
+  background: var(--cream-card);
+  border: 2.5px solid var(--wood-dark);
+  box-shadow: 0 3px 0 var(--wood-dark);
+}
+
+.fb b.l {
+  flex: none;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  border: 2px solid var(--wood-dark);
+  display: grid;
+  place-items: center;
+  color: #FFF9EC;
+  font-family: "Lilita One", sans-serif;
+  font-size: 18px;
+}
+
+.fb .e {
+  display: none;
+  font-weight: 600;
+  font-size: 13px;
+  margin-top: 3px;
+  color: var(--ink);
+}
+
+.fb.on {
+  background: #FFF6DC;
+}
+
+.fb.on .e {
+  display: block;
+}
+
+.fb small {
+  display: block;
+  font-family: "Gaegu", cursive;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--accent-berry);
+}
+
+.opt {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border-radius: 11px;
+  margin: 4px 0;
+  padding: 7px 11px;
+  font-weight: 700;
+  background: var(--cream-card);
+  border: 2px solid var(--wood-mid);
+  box-shadow: 0 2px 0 var(--cream-shadow);
+}
+
+.opt:hover {
+  background: #FFEAA7;
+}
+
+.opt.ok {
+  background: var(--ok);
+  border-color: var(--wood-dark);
+  color: #FFF9EC;
+}
+
+.opt.no {
+  background: var(--bad);
+  border-color: var(--wood-dark);
+  color: #FFF9EC;
+}
+
+.ex {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--ok);
+  margin: 4px 0 0;
+}
+
+.mc {
+  margin: 9px 0;
+  padding: 8px 10px;
+  background: var(--cream-card);
+  border: 2px solid #E2D2B5;
+  border-radius: 12px;
+}
+
+.ans {
+  background: var(--ok-bg);
+  color: #133B1A;
+  border: 2px solid var(--ok);
+  border-radius: 10px;
+  padding: 7px 10px;
+  margin-top: 6px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+  font-size: 13px;
+  margin: 6px 0;
+  border: 2px solid var(--wood-dark);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--cream-card);
+}
+
+th, td {
+  border-bottom: 1.5px solid #E5D5B8;
+  border-right: 1.5px solid #E5D5B8;
+  padding: 5px 8px;
+  text-align: left;
+  vertical-align: top;
+}
+
+th:last-child, td:last-child {
+  border-right: none;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+th {
+  background: var(--wood-mid);
+  color: #FFF9EC;
+  font-family: "Lilita One", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+}
+
+nav.pager {
+  max-width: 960px;
+  margin: 8px auto 16px;
+  padding: 8px 14px;
+  background: var(--cream-card);
+  border: var(--border-thick);
+  border-radius: 999px;
+  box-shadow: 0 4px 0 var(--wood-dark);
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  align-items: center;
+}
+
+#ind {
+  font-family: "Gaegu", cursive;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--wood-dark);
+}
+
+ul, ol {
+  margin: 5px 0;
+  padding-left: 20px;
+}
+
+small.k {
+  opacity: 0.85;
+  font-size: 12px;
+}
+
+.mascot-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.mascot-badge {
+  flex: none;
+  background: #FFF9EC;
+  border: 2px solid var(--wood-dark);
+  border-radius: 12px;
+  padding: 4px;
+  box-shadow: 0 2px 0 var(--wood-dark);
+}
+
+.typed-input {
+  display: inline-block;
+  min-width: 118px;
+  max-width: 100%;
+  padding: 5px 10px;
+  margin: 2px 3px;
+  border: 2.5px solid var(--wood-dark);
+  border-radius: 10px;
+  background: #FFFDF7;
+  color: var(--ink);
+  font: 700 14px/1.3 "Nunito", sans-serif;
+  box-shadow: inset 0 2px 0 rgba(74, 43, 24, 0.08);
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.typed-input.wide {
+  display: block;
+  width: 100%;
+  margin: 6px 0 4px;
+}
+
+.typed-input:focus, .typed-area:focus {
+  outline: none;
+  border-color: var(--awning-terracotta);
+  background: #FFF9E6;
+}
+
+.typed-input.ok, .typed-area.ok {
+  border-color: var(--ok);
+  background: var(--ok-bg);
+  color: #133B1A;
+}
+
+.typed-input.no, .typed-area.no {
+  border-color: var(--bad);
+  background: var(--bad-bg);
+  color: #5C1219;
+}
+
+.typed-area {
+  display: block;
+  width: 100%;
+  min-height: 54px;
+  padding: 8px 10px;
+  margin: 5px 0 8px;
+  border: 2.5px solid var(--wood-dark);
+  border-radius: 12px;
+  background: #FFFDF7;
+  color: var(--ink);
+  font: 600 14px/1.45 "Nunito", sans-serif;
+  resize: vertical;
+}
+
+.check-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.btn-check {
+  background: var(--accent-mustard);
+  color: var(--ink);
+}
+
+.btn-check:hover {
+  background: #F3BC52;
+}
+
+.btn-reset {
+  background: var(--cream-bg);
+  font-size: 12px;
+  padding: 6px 11px;
+}
+
+.score-pill {
+  display: inline-block;
+  background: #FFF2CC;
+  border: 2px solid var(--wood-dark);
+  border-radius: 999px;
+  padding: 3px 11px;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.item-fb {
+  font-size: 12.5px;
+  font-weight: 800;
+  margin: 3px 0 6px;
+}
+
+.item-fb.ok { color: var(--ok); }
+.item-fb.no { color: var(--bad); }
+
+.ref-list a {
+  color: var(--accent-berry);
+  font-weight: 700;
+  text-decoration: underline;
+  word-break: break-word;
+}
+</style>
+</head>
+<body>
+<header class="studio-bar">
+  <div class="brand-pill">
+    <span class="brand-badge">CAFE &amp; BOOTH EDITION</span>
+    <span>CONNECT &amp; LEARN</span>
+  </div>
+  <div class="zones" id="zn"></div>
+</header>
+
+<main class="book-shell">
+  <div class="stall-frame">
+    <div class="awning" aria-hidden="true"></div>
+    <div class="book" id="bk" style="--n: 1;"></div>
+  </div>
+</main>
+
+<nav class="pager">
+  <button id="pv" type="button">← Previous</button>
+  <span id="ind"></span>
+  <button id="nx" type="button">Next →</button>
+</nav>
+
+<script>
+const Z = {
+  p: "#D96B43",
+  t: "#2B8A7E",
+  b: "#C84B31",
+  d: "#6C4A8E"
+};
+const C = ["#C84B31", "#2B8A7E", "#8E44AD", "#2F6FA3", "#D96B43", "#C98A1C", "#2E7D32"];
+const FB = [
+  ["For", "Reason", "I’d hate to waste a drop of water, for it is crucial when crossing the desert."],
+  ["And", "Addition", "Jennifer and Ron wanted to spend the weekend at the beach."],
+  ["Nor", "Negative addition", "Sam wouldn’t go down the water slide, nor would he jump off the diving board."],
+  ["But", "Opposing idea", "Paul is ready to leave, but Steve needs more time."],
+  ["Or", "Alternative options", "Kim wasn’t sure if she wanted a dog or cat."],
+  ["Yet", "Contrasting idea", "Leonard wasn’t sure he’d like the lake, yet he jumped right in on the first day of camp."],
+  ["So", "Result or effect", "Lisa couldn’t find time to study, so she didn’t do well on the exam."]
+];
+
+const connie = s => `<svg class="mascot-badge" width="${s + 8}" height="${Math.round(s * 0.62) + 8}" viewBox="0 0 100 62" aria-label="Connie the Chain Link">
+  <rect x="5" y="9" width="54" height="44" rx="22" fill="#FFF9EC" stroke="#4A2B18" stroke-width="6.5"/>
+  <rect x="41" y="9" width="54" height="44" rx="22" fill="none" stroke="#E5A93C" stroke-width="6.5"/>
+  <circle cx="23" cy="29" r="3.2" fill="#2D1B10"/>
+  <circle cx="38" cy="29" r="3.2" fill="#2D1B10"/>
+  <path d="M23 38q7.5 7.5 15 0" stroke="#2D1B10" stroke-width="3" fill="none" stroke-linecap="round"/>
+</svg>`;
+
+const bunBadge = () => `<svg width="64" height="32" viewBox="0 0 80 40" aria-label="Cozy Bun Token">
+  <ellipse cx="40" cy="23" rx="32" ry="13" fill="#E5A93C" stroke="#2D1B10" stroke-width="2.5"/>
+  <path d="M22 20q18-7 36 0" stroke="#7A4B2A" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+  <circle cx="32" cy="24" r="2" fill="#2D1B10"/>
+  <circle cx="48" cy="24" r="2" fill="#2D1B10"/>
+  <path d="M36 28q4 4 8 0" stroke="#2D1B10" stroke-width="2" fill="none" stroke-linecap="round"/>
+</svg>`;
+
+const tip = t => `<div class="box tip"><div class="mascot-row">${connie(52)}<div>${t}</div></div></div>`;
+
+const mc = (it, id) => `<div id="${id || ""}">` + it.map(([q, o, a, e], n) =>
+  `<div class="mc"><p><b>${n + 1}.</b> ${q}</p>${o.map((t, i) =>
+    `<button class="opt" type="button" ${i == a ? 'data-ok="1"' : ""}>${t}</button>`
+  ).join("")}<p class="ex" hidden>${e || ""}</p></div>`
+).join("") + `</div>`;
+
+const quest = [
+  ["Dina brought a jacket, ___ the evening was cold.", "for", ["so", "for", "but"]],
+  ["Joy likes to paint, ___ she also likes to sing.", "and", ["and", "nor", "for"]],
+  ["Ella didn’t bring a pen, ___ did she ask to borrow one.", "nor", ["or", "nor", "so"]],
+  ["The soup was hot, ___ the bread was cold.", "but", ["but", "so", "for"]],
+  ["You can submit the essay today, ___ you can submit it tomorrow.", "or", ["and", "or", "nor"]],
+  ["It was raining heavily, ___ the players kept playing.", "yet", ["yet", "for", "nor"]],
+  ["The library was closed, ___ we studied at home.", "so", ["so", "or", "yet"]]
+].map(([q, a, o]) => [q, o, o.indexOf(a)]);
+
+const P = [
+  {
+    z: "p",
+    c: "cover",
+    h: `<div class="signboard"><span class="kicker">welcome to the grammar booth</span><h1>CONNECT <span>&amp;</span> LEARN</h1></div>
+    <div class="sub">The Grammar Connection Adventure</div>
+    ${bunBadge()}
+    <div class="cover-meta"><b>Topic:</b> Syntactic Structures – Structure of Coordination</div>
+    <div class="cover-meta"><b>Grade:</b> Grade 8 (Junior High School) · <b>Subject:</b> EDU ENG 02 – Structure of English</div>
+    <div class="fanboys-row">${"FANBOYS".split("").map((l, i) =>
+      `<b class="fanboys-chip" style="background:${C[i]}">${l}</b>`
+    ).join("")}</div>
+    <div class="cover-meta">Gordon College · College of Education, Arts and Sciences · <b>Group 6</b></div>
+    <div class="cover-meta">Banaylo, Caliba, Deco, Fanugao, Levita, Montehermoso, Roallos, Udja</div>
+    <button data-go="1" type="button">Open the adventure →</button>`
+  },
+  {
+    z: "p",
+    t: "Title Page & Welcome",
+    u: "UNIT 00",
+    h: `<div class="box"><span class="lab">TITLE</span> CONNECT &amp; LEARN: The Grammar Connection Adventure<br>
+    <span class="lab">TOPIC</span> Syntactic Structures – Structure of Coordination<br>
+    <span class="lab">GRADE</span> Grade 8 (Junior High School)<br>
+    <span class="lab">SUBJECT</span> EDU ENG 02 – Structure of English<br>
+    <span class="lab">GROUP</span> Group 6 — Banaylo, Caliba, Deco, Fanugao, Levita, Montehermoso, Roallos, Udja</div>
+    ${tip("Hi! I’m <b>Connie the Chain Link</b>. My job is to join things together, just like coordination does. Follow me through four zones!")}
+    <div class="box"><b>How to use this flipbook</b><ol><li>Read the lesson boxes and study the examples.</li><li>Tap the cards and type your answers in the practice &amp; assessment items.</li><li>Check your answers and review explanations in the Check zone.</li></ol>
+    <p style="margin:6px 0 0"><b>Zones:</b> Start · Learn · Practice · Check. Use the colored buttons at the top to jump.</p></div>`
+  },
+  {
+    z: "p",
+    t: "Introduction",
+    u: "UNIT 01",
+    h: `<div class="box">Coordination is a grammatical structure that joins two or more elements of the same kind and equal grammatical status. Neither element depends on the other (Nordquist, 2025). A coordinating conjunction such as <span class="cc">and</span>, <span class="cc">but</span>, and <span class="cc">or</span> usually does the joining.</div>
+    <p><b>Which sounds smoother?</b></p>
+    <div class="g2"><div class="box bad">A: Mia likes music. Mia likes art. Mia likes sports.</div><div class="box good">B: Mia likes music, art, and sports.</div></div>
+    <p>Most people choose B. Both say the same thing, but B connects the ideas instead of repeating them. English has a tool for this, called coordination.</p>
+    <div class="box"><b>Coordination works at three levels:</b><ul><li>Words: Mia <span class="cc">and</span> Jun</li><li>Phrases: in the library <span class="cc">or</span> at home</li><li>Clauses: I was tired, <span class="cc">but</span> I finished the project.</li></ul></div>
+    <p>When coordination is done wrong, sentences sound awkward. For example, “I like swimming, to dance, and drawing” mixes different forms. Balanced: <span class="v">I like swimming, dancing, and drawing.</span> In this booklet, you will learn how to connect words, phrases, and clauses correctly, and how to keep them balanced.</p>`
+  },
+  {
+    z: "p",
+    t: "Learning Outcomes",
+    u: "UNIT 02",
+    h: `<p>At the end of the lesson, students should be able to:</p>
+    <div class="box"><span class="lab">OUTCOME 1</span> <b>Define</b> the structure of coordination and explain its importance in sentence construction.</div>
+    <div class="box"><span class="lab">OUTCOME 2</span> <b>Identify and explain</b> the seven coordinating conjunctions known as FANBOYS and their functions.</div>
+    <div class="box"><span class="lab">OUTCOME 3</span> <b>Construct</b> compound words, phrases, and clauses using appropriate coordinating conjunctions and parallel structures.</div>
+    <div class="box"><span class="lab">OUTCOME 4</span> <b>Analyze and evaluate</b> sentences by identifying correct and incorrect coordination and applying appropriate grammatical corrections.</div>`
+  },
+  {
+    z: "t",
+    t: "The Big Idea & Comma Rules",
+    u: "UNIT 03",
+    h: `<div class="box">A coordinating conjunction joins words, phrases, and clauses that share equal importance and grammatical rank. Its function is to give equal emphasis to the ideas it connects. It <b>can</b> begin a sentence: <i>The class expected a pop quiz today. But the teacher decided to delay it until next week.</i></div>
+    <div class="box"><b>It connects:</b><ul><li><b>Independent clauses:</b> a subject and a verb, a complete thought.</li><li><b>Dependent clauses:</b> not a complete thought. <small class="k">e.g., I stayed home because it was raining and because I was tired.</small></li><li><b>Phrases:</b> groups of words that act like one part of speech.</li><li><b>Words:</b> two nouns, verbs, or adjectives.</li></ul></div>
+    <div class="box good"><span class="lab">COMMA YES</span><br>[Independent clause] + <b>,</b> + [<span class="cc">FANBOYS</span>] + [Independent clause]<br><i>Rita considered moving to New York, <span class="cc">but</span> she wasn’t sure if she’d like the city.</i></div>
+    <div class="box"><span class="lab">COMMA NO</span> for two items: [Word] + [<span class="cc">FANBOYS</span>] + [Word]<br><i>Jennifer <span class="cc">and</span> Ron wanted to spend the weekend at the beach.</i><br>Lists of three or more use commas: <i>music, art, and sports.</i></div>
+    ${tip("Look for TWO complete thoughts, then add a comma!")}`
+  },
+  {
+    z: "t",
+    t: "The FANBOYS",
+    u: "UNIT 04",
+    h: `<p>English has many conjunctions, but only seven are <b>coordinating conjunctions</b>. The simplest way to remember them is <b>FANBOYS</b>. Tap a card!</p>` +
+      FB.map(([w, m, e], i) =>
+        `<button class="fb" type="button"><b class="l" style="background:${C[i]}">${w[0]}</b><span><b>${w}</b><small>${m}</small><span class="e">${e.replace(new RegExp(", " + w.toLowerCase() + " |" + " " + w.toLowerCase() + " "), match => match.replace(w.toLowerCase(), `<span class="cc">${w.toLowerCase()}</span>`))}</span></span></button>`
+      ).join("") +
+      tip("After <b>nor</b>, the helping verb comes before the subject: <i>nor would he jump</i>.")
+  },
+  {
+    z: "t",
+    t: "Words, Phrases, Clauses",
+    u: "UNIT 05",
+    h: `<p>Words do not work alone. They are combined to express ideas and form meaningful sentences.</p>
+    ${tip("A <b>compound word</b> (toothbrush) is ONE word made from two. <b>Coordinated words</b> (Mia and Jun) stay separate and are joined by a conjunction.")}
+    <div class="box"><b>Compound words</b> join two or more words into a new word with its own meaning (Ellis, 2025).<table><tr><th>Form</th><th>Examples</th></tr><tr><td>Closed</td><td>classroom, football, bedroom</td></tr><tr><td>Hyphenated</td><td>mother-in-law, well-known, part-time, self-control</td></tr><tr><td>Open</td><td>ice cream, post office, swimming pool, dining table</td></tr></table></div>
+    <div class="box"><b>Phrases</b> are related words working as a unit, without a full subject-verb structure (Australian Government Style Manual, 2022).<table><tr><th>Phrase</th><th>Type</th></tr><tr><td>A beautiful garden</td><td>Noun phrase</td></tr><tr><td>Under the table</td><td>Prepositional phrase</td></tr><tr><td>Very carefully</td><td>Adverb phrase</td></tr><tr><td>Extremely talented</td><td>Adjective phrase</td></tr><tr><td>To finish the assignment</td><td>Infinitive phrase</td></tr></table></div>`
+  },
+  {
+    z: "t",
+    t: "Clauses: Independent & Dependent",
+    u: "UNIT 06",
+    h: `<p>A clause has a subject and a verb (Government of Canada, 2020).</p>
+    <div class="g2"><div class="box good"><span class="lab">INDEPENDENT</span><br>Complete thought; can stand alone as a sentence.<br><i>She reads a book every night.</i></div><div class="box bad"><span class="lab">DEPENDENT</span><br>Cannot stand alone; needs an independent clause.<br><i>Because she was tired · Although it was raining · When the teacher arrived · If you study hard</i></div></div>
+    <div class="box"><b>Dependent clauses can work as:</b><ul><li><b>Noun clause:</b> <i>What she said surprised everyone.</i></li><li><b>Adjective clause:</b> <i>The student who won the competition received a medal.</i></li><li><b>Adverb clause</b> (time, reason, condition, manner): <i>We continued practicing even though we were tired.</i></li></ul></div>
+    <div class="box"><b>Phrase types in sentences</b> (DeCapua, 2017): <i>The <u>intelligent student</u> received an award.</i> · <i>She <u>has been studying</u> for her examination.</i> · <i>He answered the question <u>with great confidence</u>.</i> · <i>The books are <u>on the wooden shelf</u>.</i></div>`
+  },
+  {
+    z: "t",
+    t: "Keep It Parallel",
+    u: "UNIT 07",
+    h: `<div class="box">Parallel structure uses the same pattern of words for ideas of equal importance, at the word, phrase, or clause level. Join them with <span class="cc">and</span> or <span class="cc">or</span>.</div>
+    <div class="box"><span class="v">✓</span> Mary likes hiking, swimming, and bicycling.<br><span class="v">✓</span> Mary likes to hike, to swim, and to ride a bicycle. <small class="k">(“to” before every verb, or only the first.)</small></div>
+    <div class="g2"><div class="box bad"><span class="x">✗</span> Mary likes hiking, swimming, and <span class="x">to ride</span> a bicycle.</div><div class="box good"><span class="v">✓</span> Mary likes hiking, swimming, and <span class="v">riding</span> a bicycle.</div><div class="box bad"><span class="x">✗</span> …write his report quickly, accurately, and <span class="x">in a detailed manner</span>.</div><div class="box good"><span class="v">✓</span> …quickly, accurately, and <span class="v">thoroughly</span>.</div></div>
+    <div class="box"><b>Clauses:</b> a parallel structure that begins with clauses must keep on with clauses. Changing the pattern or the verb voice breaks parallelism.<div class="box bad"><span class="x">✗</span> The coach told the players that they should get a lot of sleep, that they should not eat too much, and <span class="x">to do some warm-up exercises</span> before the game.</div><div class="box good"><span class="v">✓</span> …and <span class="v">that they should do</span> some warm-up exercises before the game.</div></div>
+    ${tip("Parallel Check: 1) Find the conjunction. 2) List the items it joins. 3) Do all items have the same pattern?")}`
+  },
+  {
+    z: "t",
+    t: "Sentence Analysis Lab",
+    u: "UNIT 08",
+    h: `<table><tr><th>Sentence</th><th>A | joined by | B</th><th>Level</th></tr><tr><td>Jennifer <span class="cc">and</span> Ron wanted to spend the weekend at the beach.</td><td>Jennifer | and | Ron</td><td>Words; no comma</td></tr><tr><td>Mary likes hiking, swimming, <span class="cc">and</span> riding a bicycle.</td><td>hiking, swimming | and | riding</td><td>Parallel -ing; commas in a list</td></tr><tr><td>Mia studies in the library <span class="cc">or</span> at home.</td><td>in the library | or | at home</td><td>Prepositional phrases; no comma</td></tr><tr><td>Rita considered moving to New York, <span class="cc">but</span> she wasn’t sure if she’d like the city.</td><td>clause | but | clause</td><td>Independent clauses; comma</td></tr><tr><td>Sam wouldn’t go down the water slide, <span class="cc">nor</span> would he jump off the diving board.</td><td>clause | nor | clause</td><td>Independent clauses; comma; verb before subject after nor</td></tr></table>
+    ${tip("Every pair is the same kind of element on both sides. That is coordination!")}`
+  },
+  {
+    z: "b",
+    t: "Guided Practice 1: Spot the Join",
+    u: "PRACTICE 01",
+    h: `<p>Choose the conjunction and what it joins and shows. <i>Model: Mia <span class="cc">and</span> Jun joined the quiz team → and · words · addition.</i></p>` +
+      mc([
+        ["Would you rather study at home or at school?", ["or · phrases · alternative", "or · clauses · alternative", "and · words · addition"], 0, "✓ <i>at home</i> and <i>at school</i> are phrases."],
+        ["The test was difficult, yet most students passed.", ["yet · clauses · contrast", "yet · words · addition", "so · clauses · result"], 0, "✓ Two clauses with a surprising contrast."],
+        ["Leo missed the bus, so he walked to school.", ["so · clauses · result", "so · words · reason", "for · clauses · reason"], 0, "✓ Walking is the result."],
+        ["The classroom was quiet, for everyone was taking the exam.", ["for · clauses · reason", "so · clauses · result", "for · phrases · contrast"], 0, "✓ <i>For</i> introduces the reason."],
+        ["She doesn’t like spicy food, nor does she like salty snacks.", ["nor · clauses · negative addition", "or · phrases · alternative", "nor · words · addition"], 0, "✓ Negative addition; <i>does</i> comes before <i>she</i>."]
+      ])
+  },
+  {
+    z: "b",
+    t: "Guided Practice 2: Fix the Rail",
+    u: "PRACTICE 02",
+    h: `<p>Type your corrected parallel part (or full corrected sentence) in each box, then click <b>Check Practice 2</b>! <i>Model: Maria enjoys cooking, <span class="x">to sing</span>, and dancing → singing</i></p>
+    <div class="box typed-task" id="gp2-box"><ol>
+      <li>Leo likes to draw, to read, and <u>playing guitar</u>.
+        <input class="typed-input wide" type="text" placeholder="Type corrected phrase or full sentence..." data-accept="to play guitar|leo likes to draw, to read, and to play guitar|leo likes to draw, to read, and to play guitar.|drawing, reading, and playing guitar|leo likes drawing, reading, and playing guitar|leo likes drawing, reading, and playing guitar." data-hint="Use infinitive form: to play guitar">
+        <div class="item-fb" hidden></div>
+      </li>
+      <li>The speaker talked clearly, confidently, and <u>with energy</u>.
+        <input class="typed-input wide" type="text" placeholder="Type corrected word or full sentence..." data-accept="energetically|the speaker talked clearly, confidently, and energetically|the speaker talked clearly, confidently, and energetically." data-hint="Match -ly adverbs: energetically">
+        <div class="item-fb" hidden></div>
+      </li>
+      <li>The teacher said that we should read the story, that we should take notes, and <u>to answer the questions</u>.
+        <input class="typed-input wide" type="text" placeholder="Type corrected clause or full sentence..." data-accept="that we should answer the questions|the teacher said that we should read the story, that we should take notes, and that we should answer the questions|the teacher said that we should read the story, that we should take notes, and that we should answer the questions." data-hint="Match clause pattern: that we should answer the questions">
+        <div class="item-fb" hidden></div>
+      </li>
+      <li>Write your own parallel sentence using three <b>-ing</b> words:
+        <div style="margin-top:4px">I enjoy <input class="typed-input" type="text" style="min-width:95px" placeholder="e.g., reading" data-ing="1">, <input class="typed-input" type="text" style="min-width:95px" placeholder="e.g., painting" data-ing="1">, and <input class="typed-input" type="text" style="min-width:95px" placeholder="e.g., singing" data-ing="1">.</div>
+        <div class="item-fb" hidden></div>
+      </li>
+    </ol>
+    <div class="check-row">
+      <button class="btn-check chk-typed" type="button">Check Practice 2</button>
+      <button class="btn-reset rst-typed" type="button">Reset</button>
+      <span class="score-pill" id="gp2-sc">Score: 0 / 4</span>
+    </div></div>`
+  },
+  {
+    z: "b",
+    t: "Activity: The FANBOYS Quest",
+    u: "GAME ZONE",
+    h: `<div class="box tip"><b>Team game, 3–4 players.</b> Read each sentence aloud, pick the FANBOYS word that fits, and score <b>2 points</b> for each correct link. Add <b>1 point</b> if you can explain why it fits. Highest score is the <b>Link Master</b>!</div>` +
+      mc(quest, "qs") +
+      `<div class="box tip">Quest score: <b id="qsc">0</b> / 7</div>`
+  },
+  {
+    z: "b",
+    t: "Independent Task: Connect and Create!",
+    u: "SOLO MISSION",
+    h: `<p><b>Objective:</b> Type the missing coordinating conjunctions, classify each structure, and write your own parallel &amp; compound sentences.</p>
+    <div class="box typed-task" id="ind-a"><b>Part A.</b> Type the best FANBOYS conjunction (<i>for, and, nor, but, or, yet, so</i>).<ol>
+      <li>I wanted to play outside, <input class="typed-input" type="text" style="min-width:86px" placeholder="type..." data-accept="but|yet" data-hint="but / yet"> it started raining.<div class="item-fb" hidden></div></li>
+      <li>Maria studied hard, <input class="typed-input" type="text" style="min-width:86px" placeholder="type..." data-accept="so" data-hint="so"> she passed the examination.<div class="item-fb" hidden></div></li>
+      <li>Would you like coffee <input class="typed-input" type="text" style="min-width:86px" placeholder="type..." data-accept="or" data-hint="or"> tea?<div class="item-fb" hidden></div></li>
+      <li>He was tired, <input class="typed-input" type="text" style="min-width:86px" placeholder="type..." data-accept="yet|but" data-hint="yet / but"> he continued working.<div class="item-fb" hidden></div></li>
+      <li>Ana likes reading books, <input class="typed-input" type="text" style="min-width:86px" placeholder="type..." data-accept="and|but" data-hint="and / but"> her brother enjoys watching movies.<div class="item-fb" hidden></div></li>
+    </ol>
+    <div class="check-row">
+      <button class="btn-check chk-typed" type="button">Check Part A</button>
+      <button class="btn-reset rst-typed" type="button">Reset</button>
+      <span class="score-pill" id="inda-sc">Part A: 0 / 5</span>
+    </div></div>
+
+    <div class="box typed-task" id="ind-b"><b>Part B.</b> Type whether the underlined part is a <b>compound word</b>, <b>compound phrase</b>, or <b>compound clause</b>.<ol start="6">
+      <li>My mother bought a <u>toothbrush</u> for me.<br>
+        <input class="typed-input" type="text" style="min-width:175px" placeholder="compound word / phrase / clause" data-accept="compound word" data-hint="compound word">
+        <div class="item-fb" hidden></div>
+      </li>
+      <li>You can study <u>in the library or at home</u>.<br>
+        <input class="typed-input" type="text" style="min-width:175px" placeholder="compound word / phrase / clause" data-accept="compound phrase" data-hint="compound phrase">
+        <div class="item-fb" hidden></div>
+      </li>
+      <li>Peter washed the dishes, <u>and his sister cleaned the table</u>.<br>
+        <input class="typed-input" type="text" style="min-width:175px" placeholder="compound word / phrase / clause" data-accept="compound clause" data-hint="compound clause">
+        <div class="item-fb" hidden></div>
+      </li>
+    </ol>
+    <div class="check-row">
+      <button class="btn-check chk-typed" type="button">Check Part B</button>
+      <button class="btn-reset rst-typed" type="button">Reset</button>
+      <span class="score-pill" id="indb-sc">Part B: 0 / 3</span>
+    </div></div>
+
+    <div class="box typed-task" id="ind-c"><b>Part C.</b> Write your own sentences in the boxes below:
+      <label style="display:block;margin-top:6px"><b>9)</b> A sentence with a <b>compound phrase</b> (using <i>and</i> or <i>or</i>):</label>
+      <textarea class="typed-area" placeholder="e.g., We can study in the library or at home." data-rule="fanboys"></textarea>
+      <div class="item-fb" hidden></div>
+      <label style="display:block"><b>10)</b> A sentence with a <b>compound clause</b> using a comma + FANBOYS:</label>
+      <textarea class="typed-area" placeholder="e.g., It started to rain, so we stayed indoors." data-rule="comma-fanboys"></textarea>
+      <div class="item-fb" hidden></div>
+      <label style="display:block"><b>11)</b> A sentence with <b>parallel structure</b> (3 matching items):</label>
+      <textarea class="typed-area" placeholder="e.g., She likes reading, writing, and drawing." data-rule="parallel"></textarea>
+      <div class="item-fb" hidden></div>
+      <div class="check-row">
+        <button class="btn-check chk-writing" type="button">Check Part C</button>
+        <button class="btn-reset rst-typed" type="button">Reset</button>
+        <span class="score-pill" id="indc-sc">Part C: 0 / 3</span>
+      </div>
+    </div>`
+  },
+  {
+    z: "d",
+    t: "Assessment",
+    u: "CHECKPOINT",
+    h: `<p><b>Part I: Multiple Choice</b> — Choose the best answer. <b>MC Score: <span id="asc">0</span> / 5</b></p>` +
+      mc([
+        ["Which statement best describes the structure of coordination and its importance?", ["It connects elements of unequal importance.", "It joins elements of equal rank to express ideas clearly and coherently.", "It connects dependent elements to make them independent.", "It modifies elements to provide additional descriptions."], 1, "✓ Coordination joins elements of equal rank."],
+        ["<i>The students prepared thoroughly for the competition, yet they did not win.</i> What does <i>yet</i> do?", ["Introduces a reason", "Presents an alternative", "Expresses a contrasting idea", "Indicates a result or effect"], 2, "✓ Yet shows contrast."],
+        ["<i>We can meet in the classroom or at the library.</i> Which statement is correct?", ["Classroom is a closed compound word; the conjunction connects two independent clauses.", "Classroom is an open compound word; the conjunction connects two noun phrases.", "Classroom is a hyphenated compound word; the conjunction connects two dependent clauses.", "Classroom is a closed compound word; the conjunction connects two prepositional phrases."], 3, "✓ In the classroom and at the library are prepositional phrases."],
+        ["Which sentence correctly connects two independent clauses?", ["The rain became heavier, so the students stayed inside.", "The rain became heavier so, the students stayed inside.", "The rain became heavier, the students stayed inside.", "The rain became heavier, so, the students stayed inside."], 0, "✓ Comma before the conjunction, none after it."],
+        ["Which revision has correct parallel structure? <i>Angela enjoys reading books, to paint landscapes, and writing poems.</i>", ["…reading books, to paint landscapes, and to write poems.", "…reading books, painting landscapes, and writing poems.", "…to read books, painting landscapes, and writing poems.", "…reading books, painting landscapes, and to write poems."], 1, "✓ All three use the -ing form."]
+      ], "as") +
+    `<div class="box typed-task" id="as-typed"><b>Part II: Typed Mastery Check</b> — Type the exact answer to complete each item.
+      <ol start="6">
+        <li>Supply the proper coordinating conjunction for negative addition:<br>
+          She did not call, <input class="typed-input" type="text" style="min-width:80px" placeholder="type..." data-accept="nor" data-hint="nor"> did she send a message.
+          <div class="item-fb" hidden></div>
+        </li>
+        <li>Rewrite the underlined nonparallel phrase so it matches the others:<br>
+          The coach asked the team to stretch, to hydrate, and <u>running laps</u> → <input class="typed-input" type="text" style="min-width:130px" placeholder="type..." data-accept="to run laps|run laps" data-hint="to run laps">
+          <div class="item-fb" hidden></div>
+        </li>
+        <li>Combine into one compound sentence using a comma + <b>so</b>:<br>
+          <i>It was getting dark. We turned on the porch light.</i>
+          <input class="typed-input wide" type="text" placeholder="Type the combined sentence..." data-accept="it was getting dark, so we turned on the porch light|it was getting dark, so we turned on the porch light." data-hint="It was getting dark, so we turned on the porch light.">
+          <div class="item-fb" hidden></div>
+        </li>
+      </ol>
+      <div class="check-row">
+        <button class="btn-check chk-typed" type="button">Check Part II</button>
+        <button class="btn-reset rst-typed" type="button">Reset</button>
+        <span class="score-pill" id="ast-sc">Typed Score: 0 / 3</span>
+      </div>
+    </div>`
+  },
+  {
+    z: "d",
+    t: "Answer Key",
+    u: "ANSWER KEY",
+    h: `<div class="box"><b>Assessment:</b> 1 B · 2 C · 3 D · 4 A · 5 B · Typed: 6 nor · 7 to run laps · 8 It was getting dark, so we turned on the porch light.<br>Explanations appear when you answer each item on the previous page.</div>
+    <div class="box"><b>Guided Practice 1:</b> or / phrases · yet / clauses · so / clauses · for / clauses · nor / clauses.</div>
+    <div class="box"><b>Guided Practice 2:</b> 1 to play guitar (or drawing, reading, and playing guitar) · 2 energetically · 3 that we should answer the questions · 4 three matching -ing verbs.</div>
+    <div class="box"><b>Quest:</b> for · and · nor · but · or · yet · so.</div>
+    <div class="box"><b>Independent Task:</b> A: 1 but/yet · 2 so · 3 or · 4 yet/but · 5 and (but also fine). B: 6 compound word · 7 compound phrase · 8 compound clause. C: answers vary (2 points each: structure + grammar and punctuation).</div>
+    ${tip("<b>Score guide:</b> 5 = Link Master · 3–4 = Connected · 0–2 = review the Learn zone.")}`
+  },
+  {
+    z: "d",
+    t: "References",
+    u: "SOURCES",
+    h: `<div class="box ref-list"><ul style="padding-left:16px">
+      <li>Andra. (n.d.). <i>Coordinating conjunction — Definition, uses, and examples</i>. Superprof. <a href="https://www.superprof.com/resources/coordinating-conjunction/" target="_blank" rel="noopener noreferrer">https://www.superprof.com/resources/coordinating-conjunction/</a></li>
+      <li>Australian Government Style Manual. (2022, December 22). <i>Phrases</i>. <a href="https://www.stylemanual.gov.au/grammar-punctuation-and-conventions/parts-sentences/phrases" target="_blank" rel="noopener noreferrer">https://www.stylemanual.gov.au/grammar-punctuation-and-conventions/parts-sentences/phrases</a></li>
+      <li>DeCapua, A. (2017). <i>Grammar for teachers: A guide to American English for native and non-native speakers</i>. Springer. <a href="https://weblibrary.mila.edu.my/upload/ebook/management%20_and%20business/2017_Book_GrammarForTeachers.pdf" target="_blank" rel="noopener noreferrer">https://weblibrary.mila.edu.my/upload/ebook/management%20_and%20business/2017_Book_GrammarForTeachers.pdf</a></li>
+      <li>Ellis, M. (2025, January 21). <i>Compound words: Open, closed, or hyphenated?</i> Grammarly. <a href="https://www.grammarly.com/blog/grammar/open-and-closed-compound-words/" target="_blank" rel="noopener noreferrer">https://www.grammarly.com/blog/grammar/open-and-closed-compound-words/</a></li>
+      <li>Government of Canada. (2020, March 2). <i>Using clauses as nouns, adjectives and adverbs</i>. Language Portal of Canada. <a href="https://our-languages.canada.ca/en/hypergrammar-2/using-clauses-as-nouns-adjectives-and-adverbs" target="_blank" rel="noopener noreferrer">https://our-languages.canada.ca/en/hypergrammar-2/using-clauses-as-nouns-adjectives-and-adverbs</a></li>
+      <li>Nordquist, R. (2025, May 8). <i>Grammatical coordination</i>. ThoughtCo. <a href="http://www.thoughtco.com/what-is-coordination-grammar-1689931" target="_blank" rel="noopener noreferrer">http://www.thoughtco.com/what-is-coordination-grammar-1689931</a></li>
+      <li>Purdue Online Writing Lab. (n.d.). <i>Parallel structure</i>. Purdue University. <a href="https://owl.purdue.edu/owl/general_writing/mechanics/parallel_structure.html" target="_blank" rel="noopener noreferrer">https://owl.purdue.edu/owl/general_writing/mechanics/parallel_structure.html</a></li>
+    </ul></div>
+    <small class="k">Sources and references for CONNECT &amp; LEARN: The Grammar Connection Adventure (EDU ENG 02 – Structure of English, Group 6).</small>`
+  },
+  {
+    z: "p",
+    c: "cover",
+    h: `<div class="signboard"><span class="kicker">booth complete!</span><h1>You’re a Link <span>Master</span> now!</h1></div>
+    <div class="sub">Same rank, same pattern. Keep connecting!</div>
+    ${bunBadge()}
+    ${connie(110)}
+    <button data-go="0" type="button">Back to cover</button>`
+  }
+];
+
+const bk = document.getElementById("bk");
+P.forEach((p, i) => {
+  const d = document.createElement("section");
+  d.className = "pg " + (p.c || "");
+  d.style.setProperty("--zc", Z[p.z]);
+  const headerHtml = p.t
+    ? `<div class="pg-header-row"><h2 class="plaque-title">${p.t}</h2>${p.u ? `<span class="unit-tag">${p.u}</span>` : ""}</div>`
+    : "";
+  d.innerHTML = headerHtml + p.h + (p.c ? "" : `<span class="pn">${i + 1}</span>`);
+  d.hidden = true;
+  bk.appendChild(d);
+});
+
+const pgs = [...bk.children];
+let cur = 0;
+const mq = matchMedia("(min-width:820px)");
+const spreads = () => {
+  if (!mq.matches) return pgs.map((_, i) => [i]);
+  const s = [[0]];
+  for (let i = 1; i < pgs.length; i += 2) {
+    s.push(i + 1 < pgs.length ? [i, i + 1] : [i]);
+  }
+  return s;
+};
+
+function show() {
+  const s = spreads();
+  const k = s.findIndex(a => a.includes(cur));
+  const activeSpread = k >= 0 ? s[k] : s[0];
+  pgs.forEach((e, i) => {
+    e.hidden = !activeSpread.includes(i);
+  });
+  bk.style.setProperty("--n", activeSpread.length);
+  document.getElementById("ind").textContent = `Page ${activeSpread.map(i => i + 1).join("–")} of ${pgs.length}`;
+  scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function mv(d) {
+  const s = spreads();
+  const k = s.findIndex(a => a.includes(cur));
+  const currentIdx = k >= 0 ? k : 0;
+  const n = Math.min(s.length - 1, Math.max(0, currentIdx + d));
+  cur = s[n][0];
+  show();
+}
+
+const zb = [["Start", 1, "p"], ["Learn", 4, "t"], ["Practice", 10, "b"], ["Check", 14, "d"]];
+document.getElementById("zn").innerHTML = zb.map(([n, i, z]) =>
+  `<button data-go="${i}" type="button" style="border-color:${Z[z]}">${n}</button>`
+).join("");
+
+document.getElementById("pv").onclick = () => mv(-1);
+document.getElementById("nx").onclick = () => mv(1);
+mq.addEventListener("change", show);
+
+function normAns(s) {
+  return s.trim().toLowerCase().replace(/\s+/g, " ").replace(/[.!?]+$/, "");
+}
+
+function gradeTypedBox(box) {
+  const items = [...box.querySelectorAll("li")];
+  let score = 0;
+  items.forEach(li => {
+    const fb = li.querySelector(".item-fb");
+    const ingInputs = [...li.querySelectorAll("input[data-ing]")];
+    if (ingInputs.length) {
+      const vals = ingInputs.map(inp => normAns(inp.value));
+      const allIng = vals.every(v => v.length >= 4 && v.endsWith("ing"));
+      ingInputs.forEach((inp, idx) => {
+        const ok = vals[idx].length >= 4 && vals[idx].endsWith("ing");
+        inp.classList.toggle("ok", ok);
+        inp.classList.toggle("no", !ok);
+      });
+      if (fb) {
+        fb.hidden = false;
+        fb.className = "item-fb " + (allIng ? "ok" : "no");
+        fb.textContent = allIng
+          ? "✓ Great! All three words follow the parallel -ing pattern."
+          : "✗ Make sure all three blanks have -ing verbs (e.g., reading, swimming, drawing).";
+      }
+      if (allIng) score++;
+      return;
+    }
+    const inp = li.querySelector("input[data-accept]");
+    if (!inp) return;
+    const val = normAns(inp.value);
+    const allowed = inp.dataset.accept.split("|").map(normAns);
+    const ok = val.length > 0 && allowed.includes(val);
+    inp.classList.toggle("ok", ok);
+    inp.classList.toggle("no", !ok);
+    if (fb) {
+      fb.hidden = false;
+      fb.className = "item-fb " + (ok ? "ok" : "no");
+      fb.textContent = ok
+        ? "✓ Correct!"
+        : `✗ Not quite. Expected: ${inp.dataset.hint}`;
+    }
+    if (ok) score++;
+  });
+  const pill = box.querySelector(".score-pill");
+  if (pill) {
+    const prefix = pill.textContent.split(":")[0];
+    pill.textContent = `${prefix}: ${score} / ${items.length}`;
+  }
+}
+
+function gradeWritingBox(box) {
+  const areas = [...box.querySelectorAll("textarea.typed-area")];
+  const fanboysRe = / (for|and|nor|but|or|yet|so) /i;
+  const commaFanboysRe = /,\s*(for|and|nor|but|or|yet|so) /i;
+  let score = 0;
+  areas.forEach(ta => {
+    const fb = ta.nextElementSibling;
+    const raw = ta.value.trim();
+    const rule = ta.dataset.rule;
+    let ok = false;
+    let msg = "";
+    if (raw.length < 8 || raw.split(/\s+/).length < 3) {
+      msg = "✗ Please write a complete sentence first.";
+    } else if (rule === "fanboys") {
+      ok = fanboysRe.test(raw);
+      msg = ok
+        ? "✓ Nice! Your sentence includes a coordinating conjunction joining phrases."
+        : "✗ Include a FANBOYS conjunction (like and or or) joining two phrases.";
+    } else if (rule === "comma-fanboys") {
+      ok = commaFanboysRe.test(raw);
+      msg = ok
+        ? "✓ Great! Comma + FANBOYS detected between clauses."
+        : "✗ Remember to put a comma before your FANBOYS conjunction (e.g., ..., so ...).";
+    } else if (rule === "parallel") {
+      ok = fanboysRe.test(raw) && raw.includes(",");
+      msg = ok
+        ? "✓ Looks good! Check that all listed items share the exact same grammatical form."
+        : "✗ List three parallel items separated by commas and a conjunction (and/or).";
+    }
+    ta.classList.toggle("ok", ok);
+    ta.classList.toggle("no", !ok);
+    if (fb && fb.classList.contains("item-fb")) {
+      fb.hidden = false;
+      fb.className = "item-fb " + (ok ? "ok" : "no");
+      fb.textContent = msg;
+    }
+    if (ok) score++;
+  });
+  const pill = box.querySelector(".score-pill");
+  if (pill) {
+    pill.textContent = `Part C: ${score} / ${areas.length}`;
+  }
+}
+
+document.addEventListener("keydown", e => {
+  if (e.key === "Enter" && e.target.classList.contains("typed-input")) {
+    e.preventDefault();
+    const box = e.target.closest(".typed-task");
+    if (box) gradeTypedBox(box);
+  }
+});
+
+document.addEventListener("click", e => {
+  const t = e.target.closest("button");
+  if (!t) return;
+
+  if (t.dataset.go) {
+    cur = Math.min(pgs.length - 1, Math.max(0, +t.dataset.go));
+    show();
+    return;
+  }
+
+  if (t.classList.contains("fb")) {
+    t.classList.toggle("on");
+    return;
+  }
+
+  if (t.classList.contains("chk-typed")) {
+    const box = t.closest(".typed-task");
+    if (box) gradeTypedBox(box);
+    return;
+  }
+
+  if (t.classList.contains("chk-writing")) {
+    const box = t.closest(".typed-task");
+    if (box) gradeWritingBox(box);
+    return;
+  }
+
+  if (t.classList.contains("rst-typed")) {
+    const box = t.closest(".typed-task");
+    if (box) {
+      box.querySelectorAll("input, textarea").forEach(el => {
+        el.value = "";
+        el.classList.remove("ok", "no");
+      });
+      box.querySelectorAll(".item-fb").forEach(fb => {
+        fb.hidden = true;
+        fb.textContent = "";
+      });
+      const pill = box.querySelector(".score-pill");
+      if (pill) pill.textContent = pill.textContent.replace(/\d+(?=\s*\/)/, "0");
+    }
+    return;
+  }
+
+  if (t.classList.contains("rv")) {
+    const a = t.nextElementSibling;
+    if (a) a.hidden = !a.hidden;
+    return;
+  }
+
+  if (t.classList.contains("opt")) {
+    const m = t.closest(".mc");
+    if (!m || m.dataset.done) return;
+    m.dataset.done = "1";
+    const good = t.dataset.ok === "1";
+    t.classList.add(good ? "ok" : "no");
+    const correctBtn = m.querySelector("[data-ok]");
+    if (!good && correctBtn) correctBtn.classList.add("ok");
+    const x = m.querySelector(".ex");
+    if (x) x.hidden = false;
+    if (good) m.dataset.got = "1";
+
+    const updateScore = (id, out) => {
+      const w = document.getElementById(id);
+      const outEl = document.getElementById(out);
+      if (w && outEl) {
+        outEl.textContent = String(w.querySelectorAll('.mc[data-got="1"]').length);
+      }
+    };
+    updateScore("as", "asc");
+    updateScore("qs", "qsc");
+  }
+});
+
+show();
+</script>
+</body>
+</html>
